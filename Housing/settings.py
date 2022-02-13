@@ -15,7 +15,7 @@ import django_on_heroku
 from decouple import Config
 
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['realstate-sd.herokuapp.com']
 SECRET_KEY = Config('SECRET_KEY')
@@ -109,7 +109,7 @@ DATABASES = {
 }
 
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
