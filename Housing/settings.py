@@ -11,11 +11,21 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import django_on_heroku
+from decouple import Config
+
+
+DEBUG = True
+
+ALLOWED_HOSTS = ['realstate-sd.herokuapp.com']
+SECRET_KEY = Config('SECRET_KEY')
+
+
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -144,3 +154,4 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'static/media')
+django_on_heroku.settings(locals(), staticfiles=False)
