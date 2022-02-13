@@ -8,4 +8,3 @@ ALLOWED_HOSTS = ['murra-realstate.herokuapp.com']
 SECRET_KEY = Config('SECRET_KEY')
 
 django_on_heroku.settings(locals(),staticfiles=False)
-del DATABASES['default']['OPTIONS']['sslmod']
