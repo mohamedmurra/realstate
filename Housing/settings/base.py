@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-import dj_database_url
-from dotenv import load_dotenv,find_dotenv
 
 
 
@@ -84,39 +82,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Housing.wsgi.application'
 
-DEBUG_PROPAGATE_EXCEPTIONS =True
-
-LOGGING ={
-    'version':1,
-    'disable_existing_loggers':False,
-    'formatters':{
-        'verbose':{
-            'format':"[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt': "%d/%b/%y %H:%S"
-        },
-        'simple':{
-            'format': '%(levelname)s %(message)s'
-        },
-
-    },
-    'handlers':{
-        'console':{
-            'level':'DEBUG',
-            'class':'logging.StreamHandler',
-        },
-
-    },
-    'loggers':{
-        'MYAPP':{
-            'handlers':['console'],
-            'level':'DEBUG',
-        },
-    }
-}
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-load_dotenv(find_dotenv())
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
