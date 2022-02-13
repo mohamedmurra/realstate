@@ -4,7 +4,7 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['murra-realstate.herokuapp.com']
+ALLOWED_HOSTS = ['realstate-sd.herokuapp.com']
 SECRET_KEY = Config('SECRET_KEY')
 
 django_on_heroku.settings(locals(),staticfiles=False)

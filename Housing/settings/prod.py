@@ -4,5 +4,5 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['mos-real.herokuapp.com']
+ALLOWED_HOSTS = ['realstate-sd.herokuapp.com']
 SECRET_KEY = Config('SECRET_KEY')
