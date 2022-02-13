@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+  الأتصال بنا
+{% endblock title %}
+  
+  {% block content %}
+    
+
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">أضافة عقارات</h1>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'homepage' %}">الصفحة الرئيسية</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                 أضافة
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+        <section class="contact">
+      <div class="container">
+        <div class="row">          <div class="col-md-10 offset-md-1">
+            <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-video-tab" data-bs-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">أضافة عقارات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-plans-tab" data-bs-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">أضافة صور للعقار</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-map-tab" data-bs-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">أضافة معلومات اضافية</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                <form action='' method='POST'>
+                 {% csrf_token %}
+                 {{form|crispy}}
+                <button type='submit' class='btn btn-primary'>أضافة</button></form>
+              </div>
+              <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                <form method='POST' action='' enctype="multipart/form-data">
+                 {% csrf_token %}
+                 <div class='form-group'>
+                 <input type='file' name='images' multiple class='form-control'>
+                </div>
+                    <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                        <label class="pb-2" for="city">العقار</label>
+                        <select name='prop' placeholder=' أختر العقار  ' class="form-control form-select form-control-a" id="city">  
+                          {% for pro in prop %}  
+                        <option value={{pro.title}}>{{pro.title}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      </div>
+                 <button type='submit' class='btn btn-primary'>أضافة</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                <form method='POST' action=''>
+                 {% csrf_token %}
+                 {{e_form|crispy}}
+                 <button type='submit' class='btn btn-primary'> أضافة </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </section>
+
+
+    <!-- ======= Contact Single ======= -->
+  </main><!-- End #main -->
+{% endblock content %}

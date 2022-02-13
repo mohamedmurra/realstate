@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+  الصفحة الرئيسية
+{% endblock title %}
+  
+  {% block content %}
+
+<style type='text/css'>
+  .cover{
+    width: 600px;
+    height: 400px;
+  }
+</style>
+
+  <!-- ======= Property Search Section ======= -->
+
+  <!-- ======= Intro Section ======= -->
+  <div class="intro intro-carousel swiper position-relative">
+
+    <div class="swiper-wrapper">
+      
+      {% for house in house_cro %}
+      
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('{{house.cover.url}}')">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">{{house.aria}}
+                      
+                    </p>
+                    <h1 class="intro-title mb-4 ">
+                      <span class="color-b">{{house.title}}
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="{% url 'property-detail' house.slug%}"><span class="price-a">{{house.property_type}} | $ {{house.price|intcomma}}</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div><!-- End Intro Section -->
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section class="section-services section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">الخدمات التي نقدمها لك</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-cart"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">أستثمار تجارى</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  معك عقار بدك تستثمر فيه تجارى نقدم لك نصائح
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="{% url 'about' %}" class="link-c link-icon">أضغط لقرائة المزيد
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-calendar4-week"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">تاجير العقارات</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  نأجر لك عقارك بعرضه لمجموعة كبيرة من العملاء
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="{% url 'about' %}" class="link-c link-icon">أضغط لقرائة المزيد
+                  <span class="bi bi-calendar4-week"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-card-checklist"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">بيع العقارات</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  نعرض عقارك للبيع فى الموقع 
+                </p>
+              </div>
+              <div class="card-footer-c">
+                <a href="{% url 'about' %}" class="link-c link-icon">أضغط لقرائة الزيد
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Latest Properties Section ======= -->
+    <section class="section-property section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">أحدث عقارات </h2>
+              </div>
+              <div class="title-link">
+                <a href="{% url 'property' %}">كل العقارات
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+            
+            {% for house in houses %}
+              
+            
+            <div class="carousel-item-b swiper-slide">
+              <div class="card-box-a card-shadow">
+                
+                <div class="img-box-a">
+                  <img class='cover' src="{{house.cover.url}}" alt="" class="img-a img-fluid">
+
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="property-single.html">{{house.title}}
+                          <br /> {{house.aria.name}}</a>
+                      </h2>
+                    </div>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">{{house.property_type}} | $ {{house.price|intcomma}}</span>
+                      </div>
+                      <a href="{% url 'property-detail' house.slug %}" class="link-a">أضغط للمشاهدة
+                        <span class="bi bi-chevron-right"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">المساحة</h4>
+                          <span>{{house.space}} متر
+                            <sup>2</sup>
+                          </span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">الغرف</h4>
+                          <span>{{house.num_rooms}}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">الحمامات</h4>
+                          <span>{{house.bathrooms}}</span>
+                        </li>
+                        
+                        {% if house.rent_type %}
+                          
+                        
+                        <li>
+                          <h4 class="card-info-title">زمن الأيجار</h4>
+                          <span>{{house.rent_type}}</span>
+                        </li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+            {% endfor %}
+          </div>
+        </div>
+        <div class="propery-carousel-pagination carousel-pagination"></div>
+
+      </div>
+    </section><!-- End Latest Properties Section -->
+
+
+        <section class="section-news section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">أخر المنشورات</h2>
+              </div>
+              <div class="title-link">
+                <a href="{% url 'blog'%}">كل المنشورات
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% for post in posts %}
+        <div id="news-carousel" class="swiper">
+          <div class="swiper-wrapper">
+
+            <div class="carousel-item-c swiper-slide">
+              <div class="card-box-b card-shadow news-box">
+                <div class="img-box-b">
+                  <img src="{{post.image.url}}" alt="" class="img-b img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-header-b">
+                    <div class="card-category-b">
+                      <a href="#" class="category-b">{{post.catagory.name}}</a>
+                    </div>
+                    <div class="card-title-b">
+                      <h2 class="title-2">
+                        <a href="{% url 'blog-detail' post.slug %}">{{post.title}}
+                      </h2>
+                    </div>
+                    <div class="card-date">
+                      <span class="date-b">{{post.created}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+
+          </div>
+        </div>
+        {% endfor %}
+        <div class="news-carousel-pagination carousel-pagination"></div>
+      </div>
+    </section><!-- End Latest News Section -->
+
+
+    <!-- ======= Agents Section ======= -->
+    <section class="section-agents section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a"> أفضل السماسرة</h2>
+              </div>
+              <div class="title-link">
+                <a href="{% url 'agents' %}">كل السماسرة
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          
+          {% for agent in agents %}   
+          
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{{agent.image.url}}" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="{% url 'agent_detail' agent.email %}" class="link-two">{{agent.first_name}}
+                        <br> {{agent.last_name}}</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  
+                  {% if agent.describe %}
+                    
+                  
+                  <p class="content-d color-text-a">
+                    {{agent.describe}}
+                  </p>
+                  {% endif %}
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>رقم الهاتف: </strong>{{agent.phone_number}}
+                    </p>
+                    <p>
+                      <strong>أيميل: </strong> {{agent.email}}
+                    </p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Agents Section -->
+
+
+
+  </main><!-- End #main -->
+
+
+  {% endblock content %}

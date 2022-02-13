@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+  Detail
+{% endblock title %}
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">{{house.title}}</h1>
+              <span class="color-text-a">{{house.aria}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'homepage' %}">الصفحة الرئيسية</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="{% url 'property' %}">كل العقارات</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  {{house.title}}
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Property Single ======= -->
+    <section class="property-single nav-arrow-b">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div id="property-single-carousel" class="swiper">
+              
+              
+              
+              <div class="swiper-wrapper">
+                {% for img in images %}
+                <div class="carousel-item-b swiper-slide slide">
+                  <img src="{{img.image.url}}" alt="">
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="property-single-carousel-pagination carousel-pagination"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+
+            <div class="row justify-content-between">
+              <div class="col-md-5 col-lg-4">
+                <div class="property-price d-flex justify-content-center foo">
+                  <div class="card-header-c d-flex">
+                    <div class="card-box-ico">
+                      <span class="bi bi-cash">$</span>
+                    </div>
+                    <div class="card-title-c align-self-center">
+                      <h5 class="title-c">{{house.price|intcomma}}</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-summary">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">شرح حول العقار </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list">
+                    <ul class="list">
+                      <li class="d-flex justify-content-between">
+                        <strong>المنطقة:</strong>
+                        <span>{{house.aria.name}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>نوع العقار :</strong>
+                        <span>{{house.building_type}}</span>
+                      </li>
+                      
+                      {% if house.rent_type %}
+                        
+                      <li class="d-flex justify-content-between">
+                        <strong>زمن الايجار:</strong>
+                        <span>{{house.rent_type}}</span>
+                      </li>
+                      {% endif %}
+                        
+                      <li class="d-flex justify-content-between">
+                        <strong>الحالة:</strong>
+                        <span>{{house.property_type}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>مساحة:</strong>
+                        <span>{{house.space}}
+                          <sup>متر</sup>
+                        </span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>الغرف :</strong>
+                        <span>{{house.num_rooms}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>حمامات:</strong>
+                        <span>{{house.bathrooms}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 col-lg-7 section-md-t3">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d"> معلومات أضافية</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-description">
+                  <p class="description color-text-a">
+                    {{house.description}}
+                  </p>
+                </div>
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">أضافات</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="amenities-list color-text-a">
+                  <ul class="list-a no-margin">          
+   
+                    {% for extra in extras %}
+                      
+                    <li>{{extra.name}}</li>
+                    {% endfor %}
+                             
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-plans-tab" data-bs-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">الصورة الرئيسية</a>
+              </li>
+            </ul>
+            <div class="tab-pane  show active" id="pills-tabContent">
+              <div class="tab-pane show active" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                <img src="{{house.cover.url}}" alt="" class="img-fluid">
+              </div>
+ 
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">الأتصال بالعميل</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-4">
+                <img src="{{house.Agent.image.url}}" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="property-agent">
+                  <h4 class="title-agent">{{house.Agent.first_name}} {{house.Agent.last_name}}</h4>
+                  
+                  {% if house.Agent.describe %}
+                    
+                  
+                  <p class="color-text-a">
+                    {{house.Agent.describe}}
+                  </p>
+                  {% endif %}
+                  <ul class="list-unstyled">
+                    <li class="d-flex justify-content-between">
+                      <strong>رقم الجوال:</strong>
+                      <span class="color-text-a">{{house.Agent.phone_number}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>أيميل:</strong>
+                      <span class="color-text-a">{{house.Agent.email}}</span>
+                    </li>
+                  </ul>
+                  <div class="socials-a">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-4">
+                <div class="property-contact">
+                  <form class="form-a">
+                    <div class="row">
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="الأسم *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="أيميل *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <textarea id="textMessage" class="form-control" placeholder="تعليق *" name="message" cols="45" rows="8" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-a">أرسال رسالة</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Property Single-->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% endblock content %}
+</body>
+
+</html>
