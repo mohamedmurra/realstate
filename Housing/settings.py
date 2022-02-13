@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'Main.apps.MainConfig',
     'Acounnt.apps.AcounntConfig',
@@ -57,7 +56,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -99,16 +97,13 @@ WSGI_APPLICATION = 'Housing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd38pge0n4v47hk',
-        'USER': 'gerdcebnlrgggf',
-        'PASSWORD':
-        '2d08d80e97f0fcce043cbe27fcddfa713af34d3d783e6d603260cd7a25ea1da1',
-        'HOST': 'ec2-52-73-149-159.compute-1.amazonaws.com',
+        'NAME': 'RealState',
+        'USER': 'postgres',
+        'PASSWORD': 'mo111995',
+        'HOST': '127.0.0.1',
         'PORT': '5432'
     }
 }
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -155,4 +150,3 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'static/media')
-django_on_heroku.settings(locals(), staticfiles=False)
