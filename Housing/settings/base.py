@@ -121,7 +121,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd38pge0n4v47hk',
-        'USER': 'postgres',
+        'USER': 'gerdcebnlrgggf',
         'PASSWORD':
         '2d08d80e97f0fcce043cbe27fcddfa713af34d3d783e6d603260cd7a25ea1da1',
         'HOST': 'ec2-52-73-149-159.compute-1.amazonaws.com',
