@@ -118,7 +118,15 @@ LOGGING ={
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 load_dotenv(find_dotenv())
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3',)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd38pge0n4v47hk',
+        'USER': 'postgres',
+        'PASSWORD':
+        '2d08d80e97f0fcce043cbe27fcddfa713af34d3d783e6d603260cd7a25ea1da1',
+        'HOST': 'ec2-52-73-149-159.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
