@@ -1,1 +1,1 @@
-web: gunicorn Housing.wsgi --log-file -
+web: gunicorn Housing.wsgi 
