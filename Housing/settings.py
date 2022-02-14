@@ -9,8 +9,11 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import dj_database_url
 import os
 from pathlib import Path
+import django_on_heroku
+
 
 
 
@@ -102,6 +105,7 @@ DATABASES = {
                 }
 }
 
+
 # Password validation
 
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -150,3 +154,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'static/media')
 
 
+
+django_on_heroku.settings(locals())
