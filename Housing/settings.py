@@ -105,6 +105,7 @@ DATABASES = {
                 }
 }
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Password validation
 
