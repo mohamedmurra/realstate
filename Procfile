@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn Housing.wsgi
+web: gunicorn Housing.wsgi --log-file -

@@ -11,14 +11,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-import django_on_heroku
-from decouple import Config
+
 
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['realstate-sd.herokuapp.com']
-SECRET_KEY = Config('SECRET_KEY')
+ALLOWED_HOSTS = ['127.0.0.1', 'murra-blog.herokuapp.com']
+SECRET_KEY = ('(f3dfxy^+4ri8w#4+%=@a@3$5^6^k6ve(zw#)kqgqds3rplsk')
 
 
 
@@ -52,11 +51,14 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'Blog.apps.BlogConfig',
     'crispy_forms',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,17 +97,13 @@ WSGI_APPLICATION = 'Housing.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'RealState',
-        'USER': 'postgres',
-        'PASSWORD': 'mo111995',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
-    }
+    'default': 
+        {'ENGINE':'django.db.backends.sqlite3','NAME':os.path.join(BASE_DIR,'db.sqlite3'),
+                }
 }
 
 # Password validation
+
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -146,7 +144,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join( BASE_DIR , 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'static/media')
+
+
