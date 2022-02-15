@@ -1,1 +1,1 @@
-waitress-serve --listen=*:8000 Housing.wsgi:application
+web: gunicorn Housing.wsgi 
