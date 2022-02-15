@@ -298,9 +298,11 @@
           
           <div class="col-md-4">
             <div class="card-box-d">
+              {% if agent.image %}
               <div class="card-img-d">
                 <img src="{{agent.image.url}}" alt="" class="img-d img-fluid">
               </div>
+              {% endif %}
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
                   <div class="card-title-d align-self-center">

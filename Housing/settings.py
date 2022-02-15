@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import dj_database_url
 import os
 from pathlib import Path
 import django_on_heroku
@@ -19,7 +18,7 @@ import django_on_heroku
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'murra-blog.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 SECRET_KEY = ('(f3dfxy^+4ri8w#4+%=@a@3$5^6^k6ve(zw#)kqgqds3rplsk')
 
 
@@ -54,14 +53,12 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'Blog.apps.BlogConfig',
     'crispy_forms',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -73,7 +70,6 @@ MIDDLEWARE = [
 
 AUTH_USER_MODEL = 'Acounnt.Acount'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 ROOT_URLCONF = 'Housing.urls'
@@ -105,7 +101,6 @@ DATABASES = {
                 }
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Password validation
 
@@ -149,7 +144,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT = os.path.join( BASE_DIR , 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'static/media')
