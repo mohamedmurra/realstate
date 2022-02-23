@@ -178,9 +178,11 @@
               </div>
             </div>
             <div class="row">
+              {% if house.Agent.image %}
               <div class="col-md-6 col-lg-4">
                 <img src="{{house.Agent.image.url}}" alt="" class="img-fluid">
               </div>
+              {% endif %}
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
                   <h4 class="title-agent">{{house.Agent.first_name}} {{house.Agent.last_name}}</h4>

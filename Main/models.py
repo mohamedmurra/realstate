@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+
 # Create your models here.
 
 
@@ -66,7 +67,7 @@ class House(models.Model):
 
   title = models.CharField(max_length=100)
   price = models.IntegerField()
-  description =models.TextField()
+  description =  models.TextField()
   building_type=models.ForeignKey(Building ,on_delete=models.CASCADE)
   flour = models.IntegerField(blank=True, null=True)
   num_rooms =models.IntegerField()
@@ -79,7 +80,7 @@ class House(models.Model):
   status =models.BooleanField(default=True)
   cover =models.ImageField(upload_to=uplaod_lucationn)
   property_type =models.CharField(max_length=10,choices=PROPERTY_CHOICHES)
-  bathrooms =models.IntegerField(blank=True,null=True)
+  bathrooms =models.IntegerField()
   Agent =models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_NULL,null=True,blank=True)
 
 

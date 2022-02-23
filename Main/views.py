@@ -25,10 +25,13 @@ def propertes(request):
   building = Building.objects.all()
   typ = request.GET.get('type')
   Aria =aria.objects.all()
-  houses =House.objects.all().order_by('-created')
-  if typ != '' and not None:
-    if typ != 'الكل':
-      houses=houses.filter(property_type=typ)
+
+  if typ == 'للأيجار':
+    houses = House.objects.filter(property_type='للأيجار').order_by('-created')
+  elif typ == 'للبيع':
+    houses = House.objects.filter(property_type='للبيع').order_by('-created')
+  else :
+      houses = House.objects.all().order_by('-created')
   p = Paginator(houses, 6)
   page_number =request.GET.get('page',1)
   try:
@@ -175,21 +178,5 @@ def searsh_header(request):
 def add_house(request):
   prop =House.objects.all()
   form =house_form()
-  if request.method == 'POST':
-    form=house_form(request.POST,request.FILES)
-    if form.is_valid():
-      obj=form.save(commit=False)
-      obj.Agent=request.user.agent
-      obj.save()
-  g_form=glary_form()
-  if request.method == 'POST':
-    g_form=glary_form(request.POST,request.FILES)
-    if form.is_valid():
-      form.save()
-  e_form =extra_form()
-  if request.method == 'POST':
-    e_form=extra_form(request.POST)
-    if form.is_valid():
-      form.save()
-  
-  return render(request, 'add.html',{'form':form,'g_form':g_form,'e_form':e_form,'prop':prop})
+
+  return render(request, 'add.html',{'form':form,'prop':prop})

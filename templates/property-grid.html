@@ -46,8 +46,9 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="grid-option">
-              <form  method='get' action=''>
+              <form id='des'  method='get' action=''>
                 <select name='type' class="custom-select">
+                <option selected disabled value=""> أختر الترتيب</option>
                  <option value="الكل">
                     الكل</option>
                    <option value="للبيع">
@@ -55,7 +56,6 @@
                   <option value="للأيجار">
                     للأيجار</option>
                 </select>
-                <button type="submit">اختار</button>
               </form>
             </div>
           </div>
@@ -80,7 +80,7 @@
                     <div class="price-box d-flex">
                       <span class="price-a">{{obj.property_type}} | $ {{obj.price|intcomma}}</span>
                     </div>
-                    <a href="{% url 'property-detail' obj.slug %}" class="link-a">Click here to view
+                    <a href="{% url 'property-detail' obj.slug %}" class="link-a"> أضغط للمشاهدة 
                       <span class="bi bi-chevron-right"></span>
                     </a>
                   </div>
@@ -141,5 +141,11 @@
     </section><!-- End Property Grid Single-->
 
   </main><!-- End #main -->
-
+<script>
+  form =document.getElementById('des')
+  form.addEventListener('change',function(){
+    form.submit()
+    
+  })
+</script>
   {% endblock content %}
