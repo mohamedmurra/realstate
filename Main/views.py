@@ -91,7 +91,7 @@ def agent(request,slug):
   agent =get_object_or_404(Acount,email=slug)
   houses =House.objects.filter(Agent=agent)
   Aria =aria.objects.all()
-  return render(request,'agent_detail.html',{'agent':agent,'houses':houses,'Aria':Aria,'building':building})
+  return render(request,'agent_detail.html',{'agent':agent,'houses':houses,'Aria':Aria,'building':building,'count':houses.count()})
 
 def agents(request):
   building = Building.objects.all()
@@ -176,7 +176,11 @@ def searsh_header(request):
 
 @login_required
 def add_house(request):
-  prop =House.objects.all()
   form =house_form()
+  if request.method == 'POST':
+    form = house_form(request.POST or None, request.FILES or None)
+    if form.is_valid():
+      form.save()
+      return redirect('homepage')
 
-  return render(request, 'add.html',{'form':form,'prop':prop})
+  return render(request, 'home/index.html',{'form':form})

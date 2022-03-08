@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'Acounnt.apps.AcounntConfig',
     'django.contrib.humanize',
     'Blog.apps.BlogConfig',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -94,11 +95,14 @@ WSGI_APPLICATION = 'Housing.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': 
-        {'ENGINE':'django.db.backends.sqlite3','NAME':os.path.join(BASE_DIR,'db.sqlite3'),
-                }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mohamedmurra$realstate',
+        'USER': 'mohamedmurra',
+        'PASSWORD': 'Mo111995',
+        'HOST': 'mohamedmurra.mysql.pythonanywhere-services.com',
+    }
 }
-
 
 # Password validation
 

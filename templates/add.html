@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load crispy_forms_tags%}
 {% block title %}
   الأتصال بنا
 {% endblock title %}
@@ -39,14 +39,9 @@
       <div class="container">
       <div>
         <div class="bd-example">
-        <form class="row g-3">
+        <form  method='POST' action=''>
           {% csrf_token %}
-          {% for field in form %}
-          <div class="col-md-6">
-            <label for="name" class="form-label">{{ field.label_tag  }}</label>
-            {{field}}
-          </div>
-          {% endfor %}
+          {{form|crispy}}
           <button type="submit" class="btn btn-primary">submit</button>
         </form>
         </div>

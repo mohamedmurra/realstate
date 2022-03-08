@@ -77,9 +77,15 @@
                     </h2>
                   </div>
                   <div class="card-body-a">
+                    {% if obj.rent_type %}
                     <div class="price-box d-flex">
-                      <span class="price-a">{{obj.property_type}} | $ {{obj.price|intcomma}}</span>
+                      <span class="price-a">{{obj.property_type}} | {{obj.rent_type}} $ {{obj.price|intcomma}} </span>
                     </div>
+                    {% else %}
+                    <div class="price-box d-flex">
+                      <span class="price-a">{{obj.property_type}} | $ {{obj.price|intcomma}} </span>
+                    </div>
+                    {% endif %}
                     <a href="{% url 'property-detail' obj.slug %}" class="link-a"> أضغط للمشاهدة 
                       <span class="bi bi-chevron-right"></span>
                     </a>

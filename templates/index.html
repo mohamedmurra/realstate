@@ -38,7 +38,7 @@
                       <span class="color-b">{{house.title}}
                     </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="{% url 'property-detail' house.slug%}"><span class="price-a">{{house.property_type}} | $ {{house.price|intcomma}}</span></a>
+                      <a href="{% url 'property-detail' house.slug %}"><span class="price-a">{{house.property_type}} | $ {{house.price|intcomma}}</span></a>
                     </p>
                   </div>
                 </div>
@@ -166,20 +166,25 @@
                 
                 <div class="img-box-a">
                   <img class='cover' src="{{house.cover.url}}" alt="" class="img-a img-fluid">
-
                 </div>
                 <div class="card-overlay">
                   <div class="card-overlay-a-content">
                     <div class="card-header-a">
                       <h2 class="card-title-a">
-                        <a href="property-single.html">{{house.title}}
+                        <a href="{% url 'property-detail' house.slug %}">{{house.title}}
                           <br /> {{house.aria.name}}</a>
                       </h2>
                     </div>
                     <div class="card-body-a">
+                      {% if house.rent_type %}
+                        <div class="price-box d-flex">
+                        <span class="price-a">{{house.property_type}} | $ {{house.price|intcomma}}  {{house.rent_type}} </span>
+                      </div>
+                      {% else %}
                       <div class="price-box d-flex">
                         <span class="price-a">{{house.property_type}} | $ {{house.price|intcomma}}</span>
                       </div>
+                      {% endif %}
                       <a href="{% url 'property-detail' house.slug %}" class="link-a">أضغط للمشاهدة
                         <span class="bi bi-chevron-right"></span>
                       </a>
