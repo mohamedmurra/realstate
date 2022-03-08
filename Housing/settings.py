@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = ('(f3dfxy^+4ri8w#4+%=@a@3$5^6^k6ve(zw#)kqgqds3rplsk')
