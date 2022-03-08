@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'Housing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mohamedmurra$realstate',
+        'NAME': 'mohamedmurra$default',
         'USER': 'mohamedmurra',
         'PASSWORD': 'Mo111995@',
         'HOST': 'mohamedmurra.mysql.pythonanywhere-services.com',
