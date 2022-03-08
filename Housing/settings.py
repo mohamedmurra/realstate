@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = ('(f3dfxy^+4ri8w#4+%=@a@3$5^6^k6ve(zw#)kqgqds3rplsk')
@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mohamedmurra$realstate',
         'USER': 'mohamedmurra',
-        'PASSWORD': 'Mo111995',
+        'PASSWORD': 'Mo111995@',
         'HOST': 'mohamedmurra.mysql.pythonanywhere-services.com',
     }
 }

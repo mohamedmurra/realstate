@@ -31,10 +31,10 @@
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#">الصفحة الرئيسية</a>
+                  <a href="{% url 'homepage' %}">الصفحة الرئيسية</a>
                 </li>
                 <li class="breadcrumb-item">
-                  <a href="#">السماسرة</a>
+                  <a href="{% url 'agents' %}">السماسرة</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   {{agent.first_name}}

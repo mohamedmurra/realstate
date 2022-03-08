@@ -1,16 +1,13 @@
 from  django import forms
-from .models import blog,blog_catagory
+from .models import blog
 
 
 class blog_form(forms.ModelForm):
   class Meta:
     model = blog
-    fields = ('title','category','description','image')
+    fields = ('title','description','image')
     
-class blog_cata_form(forms.ModelForm):
- class Meta:
-  model =blog_catagory
-  fields =('name','slug')
+
   
 
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import blog,blog_catagory
+from .models import blog
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 # Create your views here.
 
