@@ -149,9 +149,11 @@
                                     <div class="row align-items-center">
                                         <div class="col-auto">
                                             <!-- Avatar -->
+                                            {% if agent.image %}
                                             <a href="{{agent.image.url}}" class="avatar">
                                                 <img class="rounded" alt="Image placeholder" src="{{agent.image.url}}">
                                             </a>
+                                            {% endif %}
                                         </div>
                                         <div class="col-auto ms--2">
                                             <h4 class="h6 mb-0">
