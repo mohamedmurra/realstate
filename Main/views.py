@@ -26,7 +26,7 @@ def homepage(request):
   return render(request, 'index.html', {'houses': houses, 'house_cro': house_cro, 'agents': agents, 'Aria': Aria, 'posts': posts, 'building': building})
 
 def propertes(request):
-  building = Building.objects.filter(status=True)
+  building = House.objects.filter(status=True)
   typ = request.GET.get('type')
   Aria =aria.objects.all()
 
@@ -229,7 +229,7 @@ def delete_property(request,slug):
 
 
 @login_required
-def propertes(request):
+def admin_propertes(request):
   proper =House.objects.all()
   p = Paginator(proper, 6)
   page_number = request.GET.get('page', 1)
