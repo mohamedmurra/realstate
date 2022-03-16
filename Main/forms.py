@@ -1,6 +1,6 @@
 from  django import forms
 from Acounnt.models import Acount
-from .models import House,Building,extras,galary,aria,Contact
+from .models import City, House,Building,extras,galary,aria,Contact
 from django.contrib.auth.forms import UserCreationForm ,authenticate
 
 
@@ -41,15 +41,27 @@ class UserUpdateForm(forms.ModelForm):
         return email
       raise forms.ValidationError(f'{email} is alredy in use')
     
+class building_form(forms.ModelForm):
+  class Meta:
+    model = Building
+    fields = '__all__'
+
+class aria_form(forms.ModelForm):
+  class Meta:
+    model = aria
+    fields ='__all__'
+
+
+class city_form(forms.ModelForm):
+  class Meta:
+    model = City
+    fields = '__all__'
+
+
 class house_form(forms.ModelForm):
   class Meta:
     model = House
     fields = '__all__'
-
-class glary_form(forms.ModelForm):
-  class Meta:
-    model = galary
-    fields =('image','proper')
     
 class extra_form(forms.ModelForm):
   class Meta:

@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from .models import House,City, aria,galary,extras,Building,Contact
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from django.contrib.auth import authenticate ,login ,logout
-from .forms import AuthenticationForm,UserUpdateForm,register_form,house_form,glary_form,extra_form,contact_form
+from .forms import AuthenticationForm,UserUpdateForm,register_form,extra_form,contact_form,aria_form,building_form,city_form,house_form
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from Acounnt.models import Acount
 from django.contrib import messages
@@ -182,16 +182,15 @@ def searsh_header(request):
 def add_house_image(request):
   properts= House.objects.all()
   if request.method == 'POST':
-    data =request.POST
+    data = request.POST['propert']
     images =request.FILES.getlist('image')
-    if data['propert'] != None:
-      proper = House.objects.get(title=data['propert'])
-      for img in images:
+    prop = House.objects.get(id=data)
+    for img in images:
         galary.objects.create(
-            proper=proper,
+            proper=prop,
             image=img
         )
-      return redirect('properts')
+    return redirect('properts')
 
   return render(request, 'home/add_images.html', {'properts': properts})
 
@@ -347,3 +346,39 @@ def dashbord(request):
   under = House.objects.filter(status=False, property_type='للأيجار')
   agents =Acount.objects.all()
   return render(request,'home/dashboard.html',{'properts':properts,'for_sell':for_sell,'for_rent':for_rent,'agents':agents,'under':under})
+
+
+@login_required
+def add_aria(request):
+  arias = aria.objects.all()
+  form = aria_form()
+  if request.method == 'POST':
+    form = aria_form(request.POST or None)
+    if form.is_valid():
+      form.save()
+      return redirect('add_aria')
+  return render(request, 'home/add_aria.html', {'arias': arias, 'form': form})
+
+
+@login_required
+def add_city(request):
+  city = City.objects.all()
+  form = city_form()
+  if request.method == 'POST':
+    form = city_form(request.POST or None)
+    if form.is_valid():
+      form.save()
+      return redirect('add_city')
+  return render(request, 'home/add_city.html', {'city': city, 'form': form})
+
+
+@login_required
+def add_building_type(request):
+  building = Building.objects.all()
+  form = building_form()
+  if request.method == 'POST':
+    form = building_form(request.POST or None)
+    if form.is_valid():
+      form.save()
+      return redirect('add_building')
+  return render(request, 'home/add_building.html', {'building': building, 'form': form})

@@ -6,6 +6,12 @@
 {% endblock title %}
 
 {% block content %}
+<style type='text/css'>
+  .maga{
+    width: 600px;
+    height: 800px;
+  }
+</style>
 
   <main id="main">
 
@@ -49,7 +55,7 @@
               
               <div class="swiper-wrapper">
                 {% for img in images %}
-                <div class="carousel-item-b swiper-slide slide">
+                <div class="carousel-item-b swiper-slide slide maga">
                   <img src="{{img.image.url}}" alt="">
                 </div>
                 {% endfor %}

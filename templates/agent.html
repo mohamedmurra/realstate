@@ -46,7 +46,9 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
+                {% if agent.image  %}
                 <img src="{{agent.image.url}}" alt="" class="img-d img-fluid">
+                {% endif %}
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
