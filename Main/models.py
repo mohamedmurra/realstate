@@ -20,11 +20,6 @@ def uplaod_lucationn(instance, filename):
  )
  return file_path
 
-def uplaod_video(instance, filename):
- file_path = 'Properte/{proper}/-{filename}'.format(
-     proper=str(instance.title),  filename=filename
- )
- return file_path
 
 
 class City(models.Model):

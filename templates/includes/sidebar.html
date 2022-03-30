@@ -1,8 +1,5 @@
 {% load static %}
-      <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-            <a class="navbar-brand me-lg-5" href="/">
-                <img class="navbar-brand-dark" src="{% static 'assets/img/brand/light.svg' %}" alt="Volt logo" /> <img class="navbar-brand-light" src="{% static 'assets/img/brand/dark.svg' %}" alt="Volt logo" />
-            </a>
+        <nav class="navbar navbar-dark bg-black px-4 col-12 d-lg-none">
             <div class="d-flex align-items-center">
                 <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -10,7 +7,7 @@
             </div>
         </nav>
 
-        <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+        <div id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
           <div class="sidebar-inner px-4 pt-3">
             <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
               <div class="d-flex align-items-center">
@@ -101,4 +98,4 @@
               </li>
             </ul>
           </div>
-        </nav>
+        </div>
