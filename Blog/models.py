@@ -4,11 +4,11 @@ from django.conf import settings
 # Create your models here.
 
 
-class Catagory(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+class Catagoryes(models.Model):
+    name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
 
-    def __Str__(self):
+    def __str__(self):
         return self.name
 
 
@@ -16,12 +16,15 @@ class blog(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='blog/', blank=True, null=True)
     description = models.TextField()
-    catagoey = models.ForeignKey(
-        Catagory, on_delete=models.CASCADE, blank=True, null=True)
+    catagory = models.ForeignKey(
+        Catagoryes, on_delete=models.SET_NULL, null=True, related_name='catagores')
     auther = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
+    editor = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, related_name='blog_editor')
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
