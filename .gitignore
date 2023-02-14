@@ -24,7 +24,8 @@ media
 
 # Distribution / packaging
 .Python
-build/
+.vscode
+
 develop-eggs/
 dist/
 downloads/
