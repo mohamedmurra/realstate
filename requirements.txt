@@ -11,6 +11,7 @@ defusedxml
 Deprecated
 dj-rest-auth
 Django
+dj_database_url
 django-braces
 django-cors-headers
 django-environ
