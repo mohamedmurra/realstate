@@ -18,7 +18,7 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from djoser import urls
-from Main.views import React
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
