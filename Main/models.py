@@ -6,6 +6,8 @@ from django.dispatch import receiver
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
 from django.db.models import Q
+from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 
@@ -98,8 +100,7 @@ class House(models.Model):
         settings.AUTH_USER_MODEL, related_name='favourties', default=None, blank=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
     status = models.BooleanField(default=True)
-    cover = models.ImageField(
-        upload_to=uplaod_lucationn, blank=True, null=True)
+    cover = CloudinaryField('image')
     property_type = models.ForeignKey(
         Purpose, on_delete=models.SET_NULL, null=True)
     bathrooms = models.IntegerField(blank=True, null=True)
@@ -124,7 +125,7 @@ class extras(models.Model):
 
 
 class galary(models.Model):
-    image = models.ImageField(upload_to=uplaod_lucation)
+    image = CloudinaryField('image')
     proper = models.ForeignKey(House, on_delete=models.CASCADE)
 
 
@@ -156,7 +157,7 @@ class Testomany(models.Model):
         (5, 5),
     ]
     name = models.CharField(max_length=100)
-    image = models.ImageField(blank=True, null=True)
+    image = CloudinaryField('image')
     created = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
     review = models.IntegerField(choices=REVIEW_CHOICHES, default=2)

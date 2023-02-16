@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 
@@ -14,7 +16,7 @@ class Catagoryes(models.Model):
 
 class blog(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='blog/', blank=True, null=True)
+    image = CloudinaryField('image')
     description = models.TextField()
     catagory = models.ForeignKey(
         Catagoryes, on_delete=models.SET_NULL, null=True, related_name='catagores')
