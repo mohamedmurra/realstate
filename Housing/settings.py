@@ -20,9 +20,9 @@ import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR /'.env')
+load_dotenv(BASE_DIR / '.env')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -169,9 +169,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'static/media')
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 cloudinary.config(
-    cloud_name =os.getenv('CLOUD_NAME'),
-    api_key =os.getenv('API_KEY'),
-    api_secret =os.getenv('API_SECRET')
+    cloud_name=os.getenv('CLOUD_NAME'),
+    api_key=os.getenv('API_KEY'),
+    api_secret=os.getenv('API_SECRET')
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -207,13 +207,14 @@ DJOSER = {
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     }
 }
-DEFAULT_FILE_STORAGE ='cloudinary_storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv(
+    'SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email',
                                    'https://www.googleapis.com/auth/userinfo.profile', 'openid']
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
