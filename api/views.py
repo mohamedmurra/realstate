@@ -19,7 +19,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django_filters.rest_framework import DjangoFilterBackend
 from .permissions import IsStaff
 from social_django.utils import psa
- 
+
 # Create your views here.
 
 
@@ -87,7 +87,7 @@ class house_view(generics.ListCreateAPIView):
 
 class house_view_all(generics.ListAPIView):
     serializer_class = Housing_serlizer
-    queryset = House.objects.filter(status=True).order_by('-created')
+    queryset = House.objects.all()
 
 
 class admin_house_images(generics.ListAPIView):
@@ -362,8 +362,8 @@ def Register_by_Acsses_token(request, backend):
         refresh = RefreshToken.for_user(user)
         return Response(
             {
-                'refresh':str(refresh),
-                'token':str(refresh.access_token)
+                'refresh': str(refresh),
+                'token': str(refresh.access_token)
             },
             status=status.HTTP_200_OK
         )
