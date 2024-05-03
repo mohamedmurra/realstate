@@ -121,7 +121,7 @@ WSGI_APPLICATION = 'Housing.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://murra:7aI2SdsDPUfDOzlkL0waLnmPZUObLHzc@dpg-ckbp4bect0pc73fmfoqg-a.frankfurt-postgres.render.com/murra_b0wx')
+    'default': dj_database_url.parse('postgres://realstate_25tx_user:awyiEZMFi6XBs91ReKlnVGNW4aKSlkNH@dpg-copjf2f79t8c73fvaevg-a.frankfurt-postgres.render.com/realstate_25tx')
 }
 
 # Password validation
